@@ -14,19 +14,19 @@ export default htmlHelper((period, options) => {
     var dateString = "";
     switch(period) {
       case 'yearly':
-        dateString = moment().subtract(1, 'year').format(I18n.t('dates.long_with_year_no_time')) + " - " + moment().format(I18n.t('dates.long_with_year_no_time'));
+        dateString = moment().subtract(1, 'year').format("jMMMM jD, jYYYY") + " - " + moment().format("jMMMM jD, jYYYY");
         break;
       case 'quarterly':
-        dateString = moment().subtract(3, 'month').format(I18n.t('dates.long_no_year_no_time')) + " - " + moment().format(I18n.t('dates.long_no_year_no_time'));
+        dateString = moment().subtract(3, 'month').format("jMMMM jD") + " - " + moment().format("jMMMM jD");
         break;
       case 'weekly':
-        dateString = moment().subtract(1, 'week').format(I18n.t('dates.long_no_year_no_time')) + " - " + moment().format(I18n.t('dates.long_no_year_no_time'));
+        dateString = moment().subtract(1, 'week').format("jMMMM jD") + " - " + moment().format("jMMMM jD");
         break;
       case 'monthly':
-        dateString = moment().subtract(1, 'month').format(I18n.t('dates.long_no_year_no_time')) + " - " + moment().format(I18n.t('dates.long_no_year_no_time'));
+        dateString = moment().subtract(1, 'month').format("jMMMM D") + " - " + moment().format("jMMMM jD");
         break;
       case 'daily':
-        dateString = moment().format(I18n.t('dates.full_no_year_no_time'));
+        dateString = moment().format("jMMMM jD");
         break;
     }
 
