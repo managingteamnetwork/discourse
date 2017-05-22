@@ -17,18 +17,18 @@ export default Em.Component.extend({
           field: input,
           container: container || this.$()[0],
           bound: container === undefined,
-          format: "YYYY-MM-DD",
-          firstDay: moment.localeData().firstDayOfWeek(),
+          format: "jYYYY-jMM-jDD",
+          firstDay: 0,
+          isRTL: true,
           i18n: {
-            previousMonth: I18n.t('dates.previous_month'),
-            nextMonth: I18n.t('dates.next_month'),
-            months: moment.months(),
-            weekdays: moment.weekdays(),
-            weekdaysShort: moment.weekdaysShort()
+            previousMonth : 'ماه قبل',
+            nextMonth     : 'ماه بعد',
+            months        : ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریرور','مهر','آبان','آذر','دی','بهمن','اسفند'],
+            weekdays      : ['یک‌شنبه','دو‌شنبه','سه‌‌شنبه','چهار‌شنبه','پنچ‌شنبه','‌جمعه','شنبه'],
+            weekdaysShort : ['ی','د','س','چ','پ','ج','ش']
           },
-          onSelect: date => this.set("value", moment(date).locale("en").format("YYYY-MM-DD"))
+         onSelect: date => {this.set("value", digits_fa2en(moment(digits_fa2en(input.value),"jYYYY-jMM-jDD").format("YYYY-MM-DD"))); console.log(input.value); console.log(this.get("value"))}
         };
-
         this._picker = new Pikaday(_.merge(default_opts, this._opts()));
       });
     });
